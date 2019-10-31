@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Handwrite.io API Documentation</title>
+    <link href="https://res.cloudinary.com/handwrite/image/upload/v1571801396/assets/favicons/72x72.ico" rel="icon" type="image/ico" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -196,24 +197,22 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen-bb464cba.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-8072ad14.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="https://res.cloudinary.com/handwrite/image/upload/c_fill,h_150,w_500/v1572452108/assets/logo-white-transparent.png" class="logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
@@ -225,219 +224,313 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#send-a-letter" class="toc-h1 toc-link" data-title="Send a Letter">Send a Letter</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#one-or-many-recipients" class="toc-h2 toc-link" data-title="One or Many Recipients">One or Many Recipients</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#rate-limiting" class="toc-h1 toc-link" data-title="Rate Limiting">Rate Limiting</a>
+          </li>
+          <li>
+            <a href="#response-codes" class="toc-h1 toc-link" data-title="Response Codes">Response Codes</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://www.handwrite.io/signup' target="_blank">Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>API Endpoint:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight plaintext"><code>https://api.handwrite.io/v1/
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>Welcome to the Handwrite API!</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>You can use our API to send handwritten notes in an automated manner, using our REST endpoints.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>We have language bindings in Shell and JavaScript, with Python and Ruby coming soon!</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>If you have questions or feedback please feel free to reach out to us <a href="https://www.handwrite.io/#contact">here</a>.</p>
+<h1 id='getting-started'>Getting Started</h1>
+<p>Handwrite uses API keys to allow access to the API. You must first sign up for a Handwrite account to obtain an API key. <a href="https://www.handwrite.io/signup">Sign up here</a>. You will be charged per card based on the plan you choose.</p>
+
+<p>Once you&#39;re logged in, you can create a key by going to the <a href="https://www.handwrite.io/integrations/api">developer dashboard</a>.</p>
+
+<p>You&#39;ll notice when you create a key that it will start with <code>test_hw</code> or <code>live_hw</code>. Test keys will not count against your usage and can be used for testing purposes as you might have guessed!</p>
+
+<p>An API key is expected to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: live_hw_sid92ldkasiie299dkw</code></p>
+
+<p>Also, the content type must be <code>Content-Type: application/json</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='send-a-letter'>Send a Letter</h1><h2 id='one-or-many-recipients'>One or Many Recipients</h2>
+<blockquote>
+<p>The Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.handwrite.io/v1/send <span class="se">\</span>
+  --header <span class="s1">'authorization: test_hw_54838bde67e8e6255fa6'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{
+  "text": "Hey dude,\nIt was great meeting you last week at the party. We'</span><span class="se">\'</span><span class="s1">'d love to have you back at the next one!\n\nBest,\n-Jackie",
+  "handwritingId": "5db6f0724cc1751452c5ae8e",
+  "cardId": "5db6f0724cc1751452c5ae8e",
+  "recipients": [
+    {
+      "firstName": "The",
+      "lastName": "Dude",
+      "company": "Unemployed",
+      "street1": "25 Main Street",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip": "90210"
+    }
+  ],
+  "from": {
+    "firstName": "Jackie",
+        "lastName": "Treehorn",
+    "street1": "1 Random Street",
+    "street2": "Apt 33A",
+    "city": "Malibu",
+    "state": "CA",
+    "zip": "90263"
+  }
+}'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api.handwrite.io/v1/send"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"content-type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">authorization</span><span class="p">:</span> <span class="s2">"test_hw_54838bde67e8e6255fa6"</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">text</span><span class="p">:</span>
+      <span class="s2">"Hey dude,\nIt was great meeting you last week at the party. We'd love to have you back at the next one!\n\nBest,\n-Jackie"</span><span class="p">,</span>
+    <span class="na">handwritingId</span><span class="p">:</span> <span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span>
+    <span class="na">cardId</span><span class="p">:</span> <span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span>
+    <span class="na">recipients</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">firstName</span><span class="p">:</span> <span class="s2">"The"</span><span class="p">,</span>
+        <span class="na">lastName</span><span class="p">:</span> <span class="s2">"Dude"</span><span class="p">,</span>
+        <span class="na">company</span><span class="p">:</span> <span class="s2">"Unemployed"</span><span class="p">,</span>
+        <span class="na">street1</span><span class="p">:</span> <span class="s2">"25 Main Street"</span><span class="p">,</span>
+        <span class="na">city</span><span class="p">:</span> <span class="s2">"Los Angeles"</span><span class="p">,</span>
+        <span class="na">state</span><span class="p">:</span> <span class="s2">"CA"</span><span class="p">,</span>
+        <span class="na">zip</span><span class="p">:</span> <span class="s2">"90210"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="na">from</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">firstName</span><span class="p">:</span> <span class="s2">"Jackie"</span><span class="p">,</span>
+      <span class="na">lastName</span><span class="p">:</span> <span class="s2">"Treehorn"</span><span class="p">,</span>
+      <span class="na">street1</span><span class="p">:</span> <span class="s2">"1 Random Street"</span><span class="p">,</span>
+      <span class="na">street2</span><span class="p">:</span> <span class="s2">"Apt 33A"</span><span class="p">,</span>
+      <span class="na">city</span><span class="p">:</span> <span class="s2">"Malibu"</span><span class="p">,</span>
+      <span class="na">state</span><span class="p">:</span> <span class="s2">"CA"</span><span class="p">,</span>
+      <span class="na">zip</span><span class="p">:</span> <span class="s2">"90263"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The Response - An array of <code>orders</code> in JSON format</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dba45e8f2b173cb5dff0300"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dude"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unemployed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25 Main Street"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90210"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jackie"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Treehorn"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 Random Street"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 33A"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malibu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90263"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"handwritingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T02:24:40.648Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<p>Send a letter to between 1 and 1000 recipients at once. For higher limits, contact us.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>POST https://api.handwrite.io/v1/send</code></p>
+<h3 id='send-attributes'>Send attributes</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>text <em>required</em></td>
+<td>String</td>
+<td>This is the body of the letter. Maximum of 320 characters.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>cardId <em>required</em></td>
+<td>String</td>
+<td>ID of the stationery/card you want. This will also determine whether it is the front or back of card.</td>
+</tr>
+<tr>
+<td>handwritingId <em>required</em></td>
+<td>String</td>
+<td>ID of the handwriting you want to use.</td>
+</tr>
+<tr>
+<td>recipients <em>required</em></td>
+<td>Array</td>
+<td>List of recipient objects. Must have at least one, but can be up to 1000.</td>
+</tr>
+<tr>
+<td>recipients[n].firstName <em>required</em></td>
+<td>String</td>
+<td>Recipient first name</td>
+</tr>
+<tr>
+<td>recipients[n].lastName</td>
+<td>String</td>
+<td>Recipient last name</td>
+</tr>
+<tr>
+<td>recipients[n].company</td>
+<td>String</td>
+<td>Recipient company. If this is included, company will be on the first line, with attention to on the second</td>
+</tr>
+<tr>
+<td>recipients[n].street1 <em>required</em></td>
+<td>String</td>
+<td>First line of the address, e.g. 555 Terrance Street</td>
+</tr>
+<tr>
+<td>recipients[n].street2</td>
+<td>String</td>
+<td>Second line of the address, e.g. Apt. 201</td>
+</tr>
+<tr>
+<td>recipients[n].city <em>required</em></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>recipients[n].state <em>required</em></td>
+<td>String</td>
+<td>*Must be the capitalized two digit abbreviation, e.g. AL instead of Alabama</td>
+</tr>
+<tr>
+<td>recipients[n].zip <em>required</em></td>
+<td>String</td>
+<td>Must be exactly 5 characters</td>
+</tr>
+<tr>
+<td>from</td>
+<td>Object</td>
+<td>Return address. (optional)</td>
+</tr>
+<tr>
+<td>from.firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>from.lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>from.street1</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>from.street2</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>from.city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>from.state</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>from.zip</td>
+<td>String</td>
+<td></td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+You're doing great — If we can do anything to help, email us at api@handwrite.io
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='rate-limiting'>Rate Limiting</h1>
+<p>The Handwrite API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>By default, each API key is rate limited at 60 requests per minute. If your requests are being rate limited, HTTP response code <code>429</code> will be returned with an <code>rate_limit_exceeded</code> error.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>In your response headers, you should see information pertaining to your limits at any given time.</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Header</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td><code>X-RateLimit-Limit</code></td>
+<td>The maximum number of requests that the consumer is permitted to make per minute.</td>
+</tr>
+<tr>
+<td><code>X-RateLimit-Remaining</code></td>
+<td>The number of requests remaining in the current rate limit window.</td>
+</tr>
+<tr>
+<td><code>X-RateLimit-Reset</code></td>
+<td>The time at which the current rate limit window resets.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='response-codes'>Response Codes</h1>
+<p>Handwrite uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the <code>2xx</code> range indicate success. Codes in the <code>4xx</code> range indicate an error that failed given the information provided (e.g., a required parameter was omitted or was the incorrect type, etc.). Codes in the <code>5xx</code> range indicate an error with our servers.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The Handwrite API uses the following response codes:</p>
 
 <table><thead>
 <tr>
@@ -445,6 +538,10 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <th>Meaning</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>200</td>
+<td>Success. Everything worked as expected</td>
+</tr>
 <tr>
 <td>400</td>
 <td>Bad Request -- Your request is invalid.</td>
@@ -454,32 +551,12 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>Unauthorized -- Your API key is wrong.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>Not Found -- The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too much! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -495,8 +572,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
