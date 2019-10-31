@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - intro
   - sending
+  - rate_limiting
   - errors
 
 search: true

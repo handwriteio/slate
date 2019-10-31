@@ -16,11 +16,11 @@ If you have questions or feedback please feel free to reach out to us [here](htt
 
 # Getting Started
 
-Handwrite uses API keys to allow access to the API. You must first sign up for a Handwrite account to obtain an API key. [Sign up here](https://www.handwrite.io/signup).
+Handwrite uses API keys to allow access to the API. You must first sign up for a Handwrite account to obtain an API key. [Sign up here](https://www.handwrite.io/signup). You will be charged per card based on the plan you choose.
 
 Once you're logged in, you can create a key by going to the [developer dashboard](https://www.handwrite.io/integrations/api).
 
-You'll notice when you create a key that you can choose LIVE or TEST keys. TEST keys will not count against your usage and can be used for testing purposes as you might have guessed!
+You'll notice when you create a key that it will start with `test_hw` or `live_hw`. Test keys will not count against your usage and can be used for testing purposes as you might have guessed!
 
 An API key is expected to be included in all API requests to the server in a header that looks like the following:
 
