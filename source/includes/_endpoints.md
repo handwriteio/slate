@@ -1,6 +1,128 @@
-# Send a Letter
+# Endpoints
 
-## One or Many Recipients
+## Get Handwritings
+
+> The Request
+
+```shell
+curl --request GET \
+  --url http://localhost:3000/api/v1/handwriting \
+  --header 'authorization: test_hw_54838bde67e8e6255fa6' \
+  --header 'content-type: application/json'
+```
+
+```javascript
+const request = require("request");
+
+const options = {
+  method: "GET",
+  url: "http://localhost:3000/api/v1/handwriting",
+  headers: {
+    "content-type": "application/json",
+    authorization: "test_hw_54838bde67e8e6255fa6"
+  }
+};
+
+request(options, (error, response, body) => {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> The Response - An array of handwriting objects in JSON format
+
+```json
+[
+  {
+    "_id": "5db6f0724cc1751452c5ae8e",
+    "name": "Jeremy",
+    "preview_url": "http://res.cloudinary.com/handwrite/image/upload/v1572270190/cards/wkwtnagsty79e0tlbiad.jpg"
+  },
+  {
+    "_id": "5db6f08c4cc1751452c5ae8f",
+    "name": "Tribeca",
+    "preview_url": "http://res.cloudinary.com/handwrite/image/upload/v1572270217/cards/hs92dvha3i5bvuhnboz7.jpg"
+  },
+  {
+    "_id": "5db6f0f14cc1751452c5ae90",
+    "name": "Terry",
+    "preview_url": "http://res.cloudinary.com/handwrite/image/upload/v1572270316/cards/bjocrcfhed6dwdadbtpv.jpg"
+  }
+]
+```
+
+This will fetch handwriting options for your users to preview and choose from.
+
+![Handwriting examples](https://res.cloudinary.com/handwrite/image/upload/c_scale,q_70,w_600/v1572557097/assets/hws_ioi6vp.png "Handwriting examples")
+
+### HTTP Request
+
+`POST https://api.handwrite.io/v1/handwriting`
+
+## Get Stationery
+
+> The Request
+
+```shell
+curl --request GET \
+  --url https://api.handwrite.io/v1/stationery \
+  --header 'authorization: test_hw_54838bde67e8e6255fa6' \
+  --header 'content-type: application/json'
+```
+
+```javascript
+const request = require("request");
+
+const options = {
+  method: "GET",
+  url: "https://api.handwrite.io/v1/stationery",
+  headers: {
+    "content-type": "application/json",
+    authorization: "test_hw_54838bde67e8e6255fa6"
+  }
+};
+
+request(options, (error, response, body) => {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> The Response - An array of stationery objects in JSON format
+
+```json
+[
+  {
+    "_id": "5db6f1854cc1751452c5ae93",
+    "name": "Classic White",
+    "preview_url": "http://res.cloudinary.com/handwrite/image/upload/v1572270464/cards/yflijfai9wm38czthluk.jpg"
+  },
+  {
+    "_id": "5db6f19b4cc1751452c5ae95",
+    "name": "Classic Navy",
+    "preview_url": "http://res.cloudinary.com/handwrite/image/upload/v1572270484/cards/afwlmwfs4dkh5s6xt5uc.jpg"
+  },
+  {
+    "_id": "5db6f1b74cc1751452c5ae96",
+    "name": "Hello",
+    "preview_url": "http://res.cloudinary.com/handwrite/image/upload/v1572270512/cards/mb9fhgwgnkdxiqtr9k0i.jpg"
+  }
+]
+```
+
+This will fetch any custom stationery you have uploaded as well as the free options we provide.
+
+<!-- https://res.cloudinary.com/handwrite/image/upload/c_scale,q_66,w_500/v1572556446/assets/cards_ddb23v.png -->
+
+![Stationery examples](https://res.cloudinary.com/handwrite/image/upload/c_scale,q_70,w_600/v1572556446/assets/cards_ddb23v.png "Stationery examples")
+
+### HTTP Request
+
+`GET https://api.handwrite.io/v1/stationery`
+
+## Send a Letter
 
 > The Request
 
@@ -120,7 +242,7 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 
 `POST https://api.handwrite.io/v1/send`
 
-### Send attributes
+### Request parameters
 
 | Parameter                                 | Type   | Description                                                                                                |
 | ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |

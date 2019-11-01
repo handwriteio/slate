@@ -10,7 +10,7 @@ toc_footers:
 
 includes:
   - intro
-  - sending
+  - endpoints
   - rate_limiting
   - errors
 
