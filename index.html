@@ -227,10 +227,16 @@
             <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
           </li>
           <li>
-            <a href="#send-a-letter" class="toc-h1 toc-link" data-title="Send a Letter">Send a Letter</a>
+            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#one-or-many-recipients" class="toc-h2 toc-link" data-title="One or Many Recipients">One or Many Recipients</a>
+                    <a href="#get-handwritings" class="toc-h2 toc-link" data-title="Get Handwritings">Get Handwritings</a>
+                  </li>
+                  <li>
+                    <a href="#get-stationery" class="toc-h2 toc-link" data-title="Get Stationery">Get Stationery</a>
+                  </li>
+                  <li>
+                    <a href="#send-a-letter" class="toc-h2 toc-link" data-title="Send a Letter">Send a Letter</a>
                   </li>
               </ul>
           </li>
@@ -277,7 +283,113 @@
 <aside class="notice">
 You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API key.
 </aside>
-<h1 id='send-a-letter'>Send a Letter</h1><h2 id='one-or-many-recipients'>One or Many Recipients</h2>
+
+<aside class="warning">Please note: you cannot make requests from the browser as your API token would be exposed publicly.</aside>
+<h1 id='endpoints'>Endpoints</h1><h2 id='get-handwritings'>Get Handwritings</h2>
+<blockquote>
+<p>The Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url http://localhost:3000/api/v1/handwriting <span class="se">\</span>
+  --header <span class="s1">'authorization: test_hw_54838bde67e8e6255fa6'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"http://localhost:3000/api/v1/handwriting"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"content-type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">authorization</span><span class="p">:</span> <span class="s2">"test_hw_54838bde67e8e6255fa6"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The Response - An array of handwriting objects in JSON format</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/handwrite/image/upload/v1572270190/cards/wkwtnagsty79e0tlbiad.jpg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f08c4cc1751452c5ae8f"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tribeca"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/handwrite/image/upload/v1572270217/cards/hs92dvha3i5bvuhnboz7.jpg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0f14cc1751452c5ae90"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/handwrite/image/upload/v1572270316/cards/bjocrcfhed6dwdadbtpv.jpg"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This will fetch handwriting options for your users to preview and choose from.</p>
+
+<p><img src="https://res.cloudinary.com/handwrite/image/upload/c_scale,q_70,w_600/v1572557097/assets/hws_ioi6vp.png" title="Handwriting examples" alt="Handwriting examples" /></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.handwrite.io/v1/handwriting</code></p>
+<h2 id='get-stationery'>Get Stationery</h2>
+<blockquote>
+<p>The Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.handwrite.io/v1/stationery <span class="se">\</span>
+  --header <span class="s1">'authorization: test_hw_54838bde67e8e6255fa6'</span> <span class="se">\</span>
+  --header <span class="s1">'content-type: application/json'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api.handwrite.io/v1/stationery"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"content-type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">authorization</span><span class="p">:</span> <span class="s2">"test_hw_54838bde67e8e6255fa6"</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The Response - An array of stationery objects in JSON format</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f1854cc1751452c5ae93"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Classic White"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/handwrite/image/upload/v1572270464/cards/yflijfai9wm38czthluk.jpg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f19b4cc1751452c5ae95"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Classic Navy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/handwrite/image/upload/v1572270484/cards/afwlmwfs4dkh5s6xt5uc.jpg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f1b74cc1751452c5ae96"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/handwrite/image/upload/v1572270512/cards/mb9fhgwgnkdxiqtr9k0i.jpg"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This will fetch any custom stationery you have uploaded as well as the free options we provide.</p>
+
+<!-- https://res.cloudinary.com/handwrite/image/upload/c_scale,q_66,w_500/v1572556446/assets/cards_ddb23v.png -->
+
+<p><img src="https://res.cloudinary.com/handwrite/image/upload/c_scale,q_70,w_600/v1572556446/assets/cards_ddb23v.png" title="Stationery examples" alt="Stationery examples" /></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.handwrite.io/v1/stationery</code></p>
+<h2 id='send-a-letter'>Send a Letter</h2>
 <blockquote>
 <p>The Request</p>
 </blockquote>
@@ -386,9 +498,9 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Send a letter to between 1 and 1000 recipients at once. For higher limits, contact us.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.handwrite.io/v1/send</code></p>
-<h3 id='send-attributes'>Send attributes</h3>
+<h3 id='request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
