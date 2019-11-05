@@ -1,4 +1,4 @@
-Getting Started with our Docs
+Getting Started
 ------------------------------
 
 ### Prerequisites
