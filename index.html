@@ -197,7 +197,7 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-5477261f.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-7e8e226c.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-8072ad14.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-c5541673.js"></script>
   </head>
@@ -280,24 +280,20 @@
 
 <p>Also, the content type must be <code>Content-Type: application/json</code></p>
 
-<aside class="notice">
-You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API key.
-</aside>
-
-<aside class="warning">Please note: you cannot make requests from the browser as your API token would be exposed publicly.</aside>
+<aside class="notice">Please note: you cannot make requests from the browser as your API token would be exposed publicly.</aside>
 <h1 id='endpoints'>Endpoints</h1><h2 id='get-handwritings'>Get Handwritings</h2>
 <blockquote>
 <p>The Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url http://localhost:3000/api/v1/handwriting <span class="se">\</span>
+  --url https://api.handwrite.io/v1/handwriting <span class="se">\</span>
   --header <span class="s1">'authorization: test_hw_54838bde67e8e6255fa6'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s2">"http://localhost:3000/api/v1/handwriting"</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api.handwrite.io/v1/handwriting"</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"content-type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
     <span class="na">authorization</span><span class="p">:</span> <span class="s2">"test_hw_54838bde67e8e6255fa6"</span>
@@ -382,7 +378,7 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This will fetch any custom stationery you have uploaded as well as the free options we provide.</p>
+<p>This will fetch any custom stationery you have uploaded as well as the publicly available options we provide.</p>
 
 <!-- https://res.cloudinary.com/handwrite/image/upload/c_scale,q_66,w_500/v1572556446/assets/cards_ddb23v.png -->
 
@@ -399,8 +395,8 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   --data <span class="s1">'{
   "text": "Hey dude,\nIt was great meeting you last week at the party. We'</span><span class="se">\'</span><span class="s1">'d love to have you back at the next one!\n\nBest,\n-Jackie",
-  "handwritingId": "5db6f0724cc1751452c5ae8e",
-  "cardId": "5db6f0724cc1751452c5ae8e",
+  "handwriting": "5db6f0724cc1751452c5ae8e",
+  "card": "5db6f0724cc1751452c5ae8e",
   "recipients": [
     {
       "firstName": "The",
@@ -434,8 +430,8 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">text</span><span class="p">:</span>
       <span class="s2">"Hey dude,\nIt was great meeting you last week at the party. We'd love to have you back at the next one!\n\nBest,\n-Jackie"</span><span class="p">,</span>
-    <span class="na">handwritingId</span><span class="p">:</span> <span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span>
-    <span class="na">cardId</span><span class="p">:</span> <span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span>
+    <span class="na">handwriting</span><span class="p">:</span> <span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span>
+    <span class="na">card</span><span class="p">:</span> <span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span>
     <span class="na">recipients</span><span class="p">:</span> <span class="p">[</span>
       <span class="p">{</span>
         <span class="na">firstName</span><span class="p">:</span> <span class="s2">"The"</span><span class="p">,</span>
@@ -491,8 +487,8 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
       </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90263"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"handwritingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"handwriting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5db6f0724cc1751452c5ae8e"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T02:24:40.648Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -514,12 +510,12 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
 <td>This is the body of the letter. Maximum of 320 characters.</td>
 </tr>
 <tr>
-<td>cardId <em>required</em></td>
+<td>card <em>required</em></td>
 <td>String</td>
 <td>ID of the stationery/card you want. This will also determine whether it is the front or back of card.</td>
 </tr>
 <tr>
-<td>handwritingId <em>required</em></td>
+<td>handwriting <em>required</em></td>
 <td>String</td>
 <td>ID of the handwriting you want to use.</td>
 </tr>
@@ -613,6 +609,24 @@ You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API
 <aside class="success">
 You're doing great — If we can do anything to help, email us at api@handwrite.io
 </aside>
+<h3 id='merge-variables'>Merge Variables</h3>
+<p>Sometimes you&#39;ll want to send a card to many people with slightly different text on each one. For example, you might want to address each recipient by his or her first name.</p>
+
+<p>In order to do this, you&#39;ll use &quot;merge variables.&quot;</p>
+
+<p><code>Hey {firstName}, I hope all is well down in {city}! How&#39;s business at {company} these days?</code></p>
+
+<p>In this case, each occurrence of {firstName} will be replaced with the recipient&#39;s actual first name.</p>
+
+<p>We support the following merge variables currently, with more coming in the future including custom merge variables:</p>
+
+<ul>
+<li>first name: <code>{firstName}</code></li>
+<li>last name: <code>{lastName}</code></li>
+<li>company: <code>{company}</code></li>
+<li>city: <code>{city}</code></li>
+<li>state: <code>{state}</code></li>
+</ul>
 <h1 id='rate-limiting'>Rate Limiting</h1>
 <p>The Handwrite API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users.</p>
 
