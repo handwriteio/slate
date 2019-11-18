@@ -6,7 +6,7 @@
 
 ```shell
 curl --request GET \
-  --url http://localhost:3000/api/v1/handwriting \
+  --url https://api.handwrite.io/v1/handwriting \
   --header 'authorization: test_hw_54838bde67e8e6255fa6' \
   --header 'content-type: application/json'
 ```
@@ -16,7 +16,7 @@ const request = require("request");
 
 const options = {
   method: "GET",
-  url: "http://localhost:3000/api/v1/handwriting",
+  url: "https://api.handwrite.io/v1/handwriting",
   headers: {
     "content-type": "application/json",
     authorization: "test_hw_54838bde67e8e6255fa6"
@@ -112,7 +112,7 @@ request(options, (error, response, body) => {
 ]
 ```
 
-This will fetch any custom stationery you have uploaded as well as the free options we provide.
+This will fetch any custom stationery you have uploaded as well as the publicly available options we provide.
 
 <!-- https://res.cloudinary.com/handwrite/image/upload/c_scale,q_66,w_500/v1572556446/assets/cards_ddb23v.png -->
 
@@ -133,8 +133,8 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{
   "text": "Hey dude,\nIt was great meeting you last week at the party. We'\''d love to have you back at the next one!\n\nBest,\n-Jackie",
-  "handwritingId": "5db6f0724cc1751452c5ae8e",
-  "cardId": "5db6f0724cc1751452c5ae8e",
+  "handwriting": "5db6f0724cc1751452c5ae8e",
+  "card": "5db6f0724cc1751452c5ae8e",
   "recipients": [
     {
       "firstName": "The",
@@ -171,8 +171,8 @@ const options = {
   body: {
     text:
       "Hey dude,\nIt was great meeting you last week at the party. We'd love to have you back at the next one!\n\nBest,\n-Jackie",
-    handwritingId: "5db6f0724cc1751452c5ae8e",
-    cardId: "5db6f0724cc1751452c5ae8e",
+    handwriting: "5db6f0724cc1751452c5ae8e",
+    card: "5db6f0724cc1751452c5ae8e",
     recipients: [
       {
         firstName: "The",
@@ -229,8 +229,8 @@ request(options, (error, response, body) => {
       "zip": "90263"
     },
     "status": "processing",
-    "handwritingId": "5db6f0724cc1751452c5ae8e",
-    "cardId": "5db6f0724cc1751452c5ae8e",
+    "handwriting": "5db6f0724cc1751452c5ae8e",
+    "card": "5db6f0724cc1751452c5ae8e",
     "createdAt": "2019-10-31T02:24:40.648Z"
   }
 ]
@@ -247,8 +247,8 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 | Parameter                                 | Type   | Description                                                                                                |
 | ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
 | text <em>required</em>                    | String | This is the body of the letter. Maximum of 320 characters.                                                 |
-| cardId <em>required</em>                  | String | ID of the stationery/card you want. This will also determine whether it is the front or back of card.      |
-| handwritingId <em>required</em>           | String | ID of the handwriting you want to use.                                                                     |
+| card <em>required</em>                    | String | ID of the stationery/card you want. This will also determine whether it is the front or back of card.      |
+| handwriting <em>required</em>             | String | ID of the handwriting you want to use.                                                                     |
 | recipients <em>required</em>              | Array  | List of recipient objects. Must have at least one, but can be up to 1000.                                  |
 | recipients[n].firstName <em>required</em> | String | Recipient first name                                                                                       |
 | recipients[n].lastName                    | String | Recipient last name                                                                                        |
@@ -270,3 +270,21 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 <aside class="success">
 You're doing great — If we can do anything to help, email us at api@handwrite.io
 </aside>
+
+### Merge Variables
+
+Sometimes you'll want to send a card to many people with slightly different text on each one. For example, you might want to address each recipient by his or her first name.
+
+In order to do this, you'll use "merge variables."
+
+`Hey {firstName}, I hope all is well down in {city}! How's business at {company} these days?`
+
+In this case, each occurrence of {firstName} will be replaced with the recipient's actual first name.
+
+We support the following merge variables currently, with more coming in the future including custom merge variables:
+
+- first name: `{firstName}`
+- last name: `{lastName}`
+- company: `{company}`
+- city: `{city}`
+- state: `{state}`

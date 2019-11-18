@@ -511,6 +511,7 @@ body {
     background-color: rgba(0, 0, 0, 0.08);
     padding: 3px;
     border-radius: 3px;
+    color: #d73a49;
     @extend %break-words;
     @extend %code-font;
   }
@@ -518,6 +519,7 @@ body {
   pre > code {
     background-color: transparent;
     padding: 0;
+    color: white;
   }
 
   aside {

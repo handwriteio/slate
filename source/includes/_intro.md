@@ -28,8 +28,4 @@ An API key is expected to be included in all API requests to the server in a hea
 
 Also, the content type must be `Content-Type: application/json`
 
-<aside class="notice">
-You must replace <code>live_hw_sid92ldkasiie299dkw</code> with your personal API key.
-</aside>
-
-<aside class="warning">Please note: you cannot make requests from the browser as your API token would be exposed publicly.</aside>
+<aside class="notice">Please note: you cannot make requests from the browser as your API token would be exposed publicly.</aside>
