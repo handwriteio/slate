@@ -132,7 +132,7 @@ curl --request POST \
   --header 'authorization: test_hw_54838bde67e8e6255fa6' \
   --header 'content-type: application/json' \
   --data '{
-  "text": "Hey dude,\nIt was great meeting you last week at the party. We'\''d love to have you back at the next one!\n\nBest,\n-Jackie",
+  "message": "Hey dude,\nIt was great meeting you last week at the party. We'\''d love to have you back at the next one!\n\nBest,\n-Jackie",
   "handwriting": "5db6f0724cc1751452c5ae8e",
   "card": "5db6f0724cc1751452c5ae8e",
   "recipients": [
@@ -169,7 +169,7 @@ const options = {
     authorization: "test_hw_54838bde67e8e6255fa6"
   },
   body: {
-    text:
+    message:
       "Hey dude,\nIt was great meeting you last week at the party. We'd love to have you back at the next one!\n\nBest,\n-Jackie",
     handwriting: "5db6f0724cc1751452c5ae8e",
     card: "5db6f0724cc1751452c5ae8e",
@@ -246,7 +246,7 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 
 | Parameter                                 | Type   | Description                                                                                                |
 | ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| text <em>required</em>                    | String | This is the body of the letter. Maximum of 320 characters.                                                 |
+| message <em>required</em>                 | String | This is the body of the letter. Maximum of 320 characters.                                                 |
 | card <em>required</em>                    | String | ID of the stationery/card you want. This will also determine whether it is the front or back of card.      |
 | handwriting <em>required</em>             | String | ID of the handwriting you want to use.                                                                     |
 | recipients <em>required</em>              | Array  | List of recipient objects. Must have at least one, but can be up to 1000.                                  |
