@@ -210,6 +210,7 @@ request(options, (error, response, body) => {
 [
   {
     "_id": "5dba45e8f2b173cb5dff0300",
+    "message": "Hey dude,\nIt was great meeting you last week at the party. We'd love to have you back at the next one!\n\nBest,\n-Jackie",
     "to": {
       "firstName": "The",
       "lastName": "Dude",
