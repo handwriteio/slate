@@ -148,7 +148,7 @@ curl --request POST \
   ],
   "from": {
     "firstName": "Jackie",
-		"lastName": "Treehorn",
+	"lastName": "Treehorn",
     "street1": "1 Random Street",
     "street2": "Apt 33A",
     "city": "Malibu",
@@ -245,28 +245,28 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 
 ### Request parameters
 
-| Parameter                                 | Type   | Description                                                                                                |
-| ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| message <em>required</em>                 | String | This is the body of the letter. Maximum of 320 characters.                                                 |
-| card <em>required</em>                    | String | ID of the stationery/card you want. This will also determine whether it is the front or back of card.      |
-| handwriting <em>required</em>             | String | ID of the handwriting you want to use.                                                                     |
-| recipients <em>required</em>              | Array  | List of recipient objects. Must have at least one, but can be up to 1000.                                  |
-| recipients[n].firstName <em>required</em> | String | Recipient first name                                                                                       |
-| recipients[n].lastName                    | String | Recipient last name                                                                                        |
-| recipients[n].company                     | String | Recipient company. If this is included, company will be on the first line, with attention to on the second |
-| recipients[n].street1 <em>required</em>   | String | First line of the address, e.g. 555 Terrance Street                                                        |
-| recipients[n].street2                     | String | Second line of the address, e.g. Apt. 201                                                                  |
-| recipients[n].city <em>required</em>      | String |
-| recipients[n].state <em>required</em>     | String | \*Must be the capitalized two digit abbreviation, e.g. AL instead of Alabama                               |
-| recipients[n].zip <em>required</em>       | String | Must be exactly 5 characters                                                                               |
-| from                                      | Object | Return address. (optional)                                                                                 |
-| from.firstName                            | String |
-| from.lastName                             | String |
-| from.street1                              | String |
-| from.street2                              | String |
-| from.city                                 | String |
-| from.state                                | String |
-| from.zip                                  | String |
+| Parameter                               | Type   | Description                                                                                                |
+| --------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| message <em>required</em>               | String | This is the body of the letter. Maximum of 320 characters.                                                 |
+| card <em>required</em>                  | String | ID of the stationery/card you want. This will also determine whether it is the front or back of card.      |
+| handwriting <em>required</em>           | String | ID of the handwriting you want to use.                                                                     |
+| recipients <em>required</em>            | Array  | List of recipient objects. Must have at least one, but can be up to 1000.                                  |
+| recipients[n].firstName                 | String | Recipient first name                                                                                       |
+| recipients[n].lastName                  | String | Recipient last name                                                                                        |
+| recipients[n].company                   | String | Recipient company. If this is included, company will be on the first line, with attention to on the second |
+| recipients[n].street1 <em>required</em> | String | First line of the address, e.g. 555 Terrance Street                                                        |
+| recipients[n].street2                   | String | Second line of the address, e.g. Apt. 201                                                                  |
+| recipients[n].city <em>required</em>    | String |
+| recipients[n].state <em>required</em>   | String | \*Must be the capitalized two digit abbreviation, e.g. AL instead of Alabama                               |
+| recipients[n].zip <em>required</em>     | String | Must be exactly 5 characters                                                                               |
+| from                                    | Object | Return address. (optional)                                                                                 |
+| from.firstName                          | String |
+| from.lastName                           | String |
+| from.street1                            | String |
+| from.street2                            | String |
+| from.city                               | String |
+| from.state                              | String |
+| from.zip                                | String |
 
 <aside class="success">
 You're doing great — If we can do anything to help, email us at api@handwrite.io
