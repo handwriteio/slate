@@ -12,11 +12,11 @@ You can use our API to send handwritten notes in an automated manner, using our 
 
 We have language bindings in Shell and JavaScript, with Python and Ruby coming soon!
 
-If you have questions or feedback please feel free to reach out to us [here](https://www.handwrite.io/#contact).
+If you have questions or feedback please feel free to reach out to us [here](https://www.handwrite.io/contact).
 
 # Getting Started
 
-Handwrite uses API keys to allow access to the API. You must first sign up for a Handwrite account to obtain an API key. [Sign up here](https://www.handwrite.io/signup). You will be charged per card based on the plan you choose.
+Handwrite uses API keys to allow access to the API. You must first sign up for a Handwrite account to obtain an API key. You will be charged per card based on the plan you choose.
 
 Once you're logged in, you can create a key by going to the [developer dashboard](https://www.handwrite.io/integrations/api).
 
