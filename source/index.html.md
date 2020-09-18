@@ -10,6 +10,7 @@ includes:
   - endpoints
   - rate_limiting
   - errors
+  - third_party
 
 search: true
 ---

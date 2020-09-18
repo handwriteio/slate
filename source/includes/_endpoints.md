@@ -269,23 +269,89 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 | from.zip                                | String |
 
 <aside class="success">
-You're doing great — If we can do anything to help, email us at api@handwrite.io
+If we can do anything to help, email us at hello@handwrite.io
 </aside>
 
-### Merge Variables
+## Get an Order
 
-Sometimes you'll want to send a card to many people with slightly different text on each one. For example, you might want to address each recipient by his or her first name.
+> The Request
 
-In order to do this, you'll use "merge variables."
+```shell
+curl --request GET \
+  --url https://api.handwrite.io/v1/order/5f44086e69217700172ac110 \
+  --header 'authorization: test_hw_54838bde67e8e6255fa6'
+```
 
-`Hey {firstName}, I hope all is well down in {city}! How's business at {company} these days?`
+```javascript
+var request = require("request");
 
-In this case, each occurrence of {firstName} will be replaced with the recipient's actual first name.
+var options = {
+  method: "GET",
+  url: "https://api.handwrite.io/v1/order/5f44086e69217700172ac110",
+  headers: { authorization: "test_hw_54838bde67e8e6255fa6" }
+};
 
-We support the following merge variables currently, with more coming in the future including custom merge variables:
+request(options, function(error, response, body) {
+  if (error) throw new Error(error);
 
-- first name: `{firstName}`
-- last name: `{lastName}`
-- company: `{company}`
-- city: `{city}`
-- state: `{state}`
+  console.log(body);
+});
+```
+
+> The Response - An object in JSON format
+
+```json
+{
+  "_id": "5f44086e69217700172ac110",
+  "message": "Hey there, hope all is well!",
+  "status": "complete",
+  "handwriting": "5dc30652bc08d20016f1ec33",
+  "card": "5f33fde848cc140017f0364a",
+  "createdAt": "2020-08-24T18:35:26.686Z",
+  "environment": "live",
+  "to": {
+    "firstName": "Jamie",
+    "lastName": "Stockton",
+    "company": "Stockton Lumber",
+    "street1": "8284 Random Road",
+    "city": "Sarasota",
+    "state": "FL",
+    "zip": "34240"
+  },
+  "from": {
+    "firstName": "Terrance",
+    "lastName": "McGhee",
+    "street1": "293 Hungerford Drive",
+    "street2": "",
+    "city": "Rockville",
+    "state": "MD",
+    "zip": "20850"
+  },
+  "proofs": [
+    {
+      "job_type": "card",
+      "image_url": "https://s3.us-east-2.amazonaws.com/any-random-image.jpg"
+    },
+    {
+      "job_type": "envelope",
+      "image_url": "https://s3.us-east-2.amazonaws.com/another-random-image.jpg"
+    }
+  ]
+}
+```
+
+This will allow you to fetch an order you've already placed whether it was from the web app or the API.
+
+This will allow you to get the status of your order, which will be one of:
+
+- `processing`
+- `written` (but not yet delivered)
+- `complete` (has been mailed)
+- `problem` (rare, technical issue on our end which we will resolve)
+- `cancelled` (also rare as we do not allow cancellations typically)
+
+It will also allow you to access your proofs (visual images of your letter front and envelope) if the letter has been completed.
+
+### HTTP Request
+
+`GET https://api.handwrite.io/v1/order/:orderId`
