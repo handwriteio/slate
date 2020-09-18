@@ -238,6 +238,9 @@
                   <li>
                     <a href="#send-a-letter" class="toc-h2 toc-link" data-title="Send a Letter">Send a Letter</a>
                   </li>
+                  <li>
+                    <a href="#get-an-order" class="toc-h2 toc-link" data-title="Get an Order">Get an Order</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -245,6 +248,9 @@
           </li>
           <li>
             <a href="#response-codes" class="toc-h1 toc-link" data-title="Response Codes">Response Codes</a>
+          </li>
+          <li>
+            <a href="#third-party-packages" class="toc-h1 toc-link" data-title="Third Party Packages">Third Party Packages</a>
           </li>
       </ul>
     </div>
@@ -605,26 +611,85 @@
 </tbody></table>
 
 <aside class="success">
-You're doing great — If we can do anything to help, email us at api@handwrite.io
+If we can do anything to help, email us at hello@handwrite.io
 </aside>
-<h3 id='merge-variables'>Merge Variables</h3>
-<p>Sometimes you&#39;ll want to send a card to many people with slightly different text on each one. For example, you might want to address each recipient by his or her first name.</p>
+<h2 id='get-an-order'>Get an Order</h2>
+<blockquote>
+<p>The Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url https://api.handwrite.io/v1/order/5f44086e69217700172ac110 <span class="se">\</span>
+  --header <span class="s1">'authorization: test_hw_54838bde67e8e6255fa6'</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<p>In order to do this, you&#39;ll use &quot;merge variables.&quot;</p>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://api.handwrite.io/v1/order/5f44086e69217700172ac110"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">authorization</span><span class="p">:</span> <span class="s2">"test_hw_54838bde67e8e6255fa6"</span> <span class="p">}</span>
+<span class="p">};</span>
 
-<p><code>Hey {firstName}, I hope all is well down in {city}! How&#39;s business at {company} these days?</code></p>
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 
-<p>In this case, each occurrence of {firstName} will be replaced with the recipient&#39;s actual first name.</p>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The Response - An object in JSON format</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f44086e69217700172ac110"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hey there, hope all is well!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"handwriting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dc30652bc08d20016f1ec33"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f33fde848cc140017f0364a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-24T18:35:26.686Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jamie"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stockton"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stockton Lumber"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8284 Random Road"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sarasota"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34240"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terrance"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McGhee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"293 Hungerford Drive"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rockville"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20850"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"proofs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.us-east-2.amazonaws.com/any-random-image.jpg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"envelope"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.us-east-2.amazonaws.com/another-random-image.jpg"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This will allow you to fetch an order you&#39;ve already placed whether it was from the web app or the API.</p>
 
-<p>We support the following merge variables currently, with more coming in the future including custom merge variables:</p>
+<p>This will allow you to get the status of your order, which will be one of:</p>
 
 <ul>
-<li>first name: <code>{firstName}</code></li>
-<li>last name: <code>{lastName}</code></li>
-<li>company: <code>{company}</code></li>
-<li>city: <code>{city}</code></li>
-<li>state: <code>{state}</code></li>
+<li><code>processing</code></li>
+<li><code>written</code> (but not yet delivered)</li>
+<li><code>complete</code> (has been mailed)</li>
+<li><code>problem</code> (rare, technical issue on our end which we will resolve)</li>
+<li><code>cancelled</code> (also rare as we do not allow cancellations typically)</li>
 </ul>
+
+<p>It will also allow you to access your proofs (visual images of your letter front and envelope) if the letter has been completed.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.handwrite.io/v1/order/:orderId</code></p>
 <h1 id='rate-limiting'>Rate Limiting</h1>
 <p>The Handwrite API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users.</p>
 
@@ -691,6 +756,10 @@ You're doing great — If we can do anything to help, email us at api@handwrite.
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h1 id='third-party-packages'>Third Party Packages</h1>
+<p>Many thanks to Tim Pile who created a library for using Elixir with the Handwrite API.</p>
+
+<p><a href="https://hexdocs.pm/handwrite/readme.html">View Elixir Package on HexDocs</a></p>
 
       </div>
       <div class="dark-box">
