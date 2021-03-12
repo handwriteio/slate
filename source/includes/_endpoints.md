@@ -237,7 +237,7 @@ request(options, (error, response, body) => {
 ]
 ```
 
-Send a letter to between 1 and 1000 recipients at once. For higher limits, contact us.
+Send a letter to up to 10 recipients at once.
 
 ### HTTP Request
 
@@ -250,7 +250,7 @@ Send a letter to between 1 and 1000 recipients at once. For higher limits, conta
 | message <em>required</em>               | String | This is the body of the letter. Maximum of 320 characters.                                                 |
 | card <em>required</em>                  | String | ID of the stationery/card you want. This will also determine whether it is the front or back of card.      |
 | handwriting <em>required</em>           | String | ID of the handwriting you want to use.                                                                     |
-| recipients <em>required</em>            | Array  | List of recipient objects. Must have at least one, but can be up to 1000.                                  |
+| recipients <em>required</em>            | Array  | List of recipient objects. Must have at least one, but can be up to 10.                                  |
 | recipients[n].firstName                 | String | Recipient first name                                                                                       |
 | recipients[n].lastName                  | String | Recipient last name                                                                                        |
 | recipients[n].company                   | String | Recipient company. If this is included, company will be on the first line, with attention to on the second |
