@@ -18,7 +18,7 @@ If you have questions or feedback please feel free to reach out to us [here](htt
 
 Handwrite uses API keys to allow access to the API. You must first sign up for a Handwrite account to obtain an API key. You will be charged per card based on the plan you choose.
 
-Once you're logged in, you can create a key by going to the [developer dashboard](https://www.handwrite.io/integrations/api).
+Once you're logged in, you can create a key by going to the [developer dashboard](https://app.handwrite.io/integrations/api).
 
 You'll notice when you create a key that it will start with `test_hw` or `live_hw`. Test keys will not count against your usage and can be used for testing purposes as you might have guessed!
 
