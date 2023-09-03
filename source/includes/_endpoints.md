@@ -268,6 +268,10 @@ Send a letter to up to 10 recipients at once.
 | from.state                              | String |
 | from.zip                                | String |
 
+### Batch Mode
+
+This endpoint also accepts an array, where each element is an object in the above format. The format of the response is the same as for sending a single message. A maximum of 1,000 individual orders (1 message x 1 recipient) may be submitted at a time.
+
 <aside class="success">
 If we can do anything to help, email us at hello@handwrite.io
 </aside>
